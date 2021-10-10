@@ -1,0 +1,9 @@
+{
+  "name": "screen-login",
+  "version": "0.0.0",
+  "description": "ScreenLogin",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
