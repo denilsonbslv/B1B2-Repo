@@ -1,5 +1,7 @@
 # VS
 .vs
+ScreenLogin/bin
+ScreenLogin/obj
 
 # Logs
 logs
