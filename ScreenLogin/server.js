@@ -1,8 +1,15 @@
-'use strict';
-var http = require('http');
-var port = process.env.PORT || 1337;
+const express = require("express");
+const app = express();
 
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World\n');
-}).listen(port);
+// Estou dizendo para o Express usar o EJS como view engine
+app.set('view engine','ejs');
+app.use(express.static('public'))
+
+app.get("/", (req, res) => {
+    res.render("index", {
+    });
+});
+
+app.listen(8080, ()=>{
+    console.log("App rodando!")
+});
