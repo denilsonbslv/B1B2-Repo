@@ -1,7 +1,5 @@
-# VS
-.vs
-ScreenLogin/bin
-ScreenLogin/obj
+# Node_Modules
+node_modules
 
 # Logs
 logs
