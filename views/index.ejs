@@ -1,20 +1,26 @@
 <%- include('./partials/header.ejs') %>
 
     <body>
-        <div class="container">
-            <form action="" method="post">
-                <div class="mb-3">
-                  <label for="" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="" id="UserEmail" aria-describedby="emailHelpId" placeholder="Email">
-                  <small id="emailHelpId" class="form-text text-muted">Insira seu email, ex.: exemplo@exemplo.com</small>
+        <div class="full">
+            <div class="container">
+                <div class="cont">
+                    <div class="l">
+                        <div class="text-l">
+                            <h1>Bem-vindo(a)!</h1>
+                            <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+                        </div>
+                    </div>
+                    <div class="r">
+                        <form action="">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" id="email">
+                            <label for="senha">Senha</label>
+                            <input type="password" name="senha" id="senha">
+                            <button>Entrar</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Senha</label>
-                  <input type="password" class="form-control" name="" id="UserPassword" placeholder="Senha">
-                </div>
-            </form>
-        </div>
-    </div>
+            </div>
         </div>
     </body>
     <%- include ('./partials/footer.ejs') %>
