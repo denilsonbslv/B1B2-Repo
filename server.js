@@ -1,5 +1,16 @@
 const express = require("express");
 const app = express();
+const connection = require("./database/database");
+
+// Database
+connection
+    .authenticate()
+    .then(() => {
+        console.log("Conexão com o banco de dados feita com sucesso!");
+    })
+    .catch((msgErro) => {
+        console.log(msgErro);
+    })
 
 // Estou dizendo para o Express usar o EJS como view engine
 app.set('view engine','ejs');
