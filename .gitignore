@@ -1,6 +1,9 @@
 # Node_Modules
 node_modules
 
+# databases
+database
+
 # Logs
 logs
 *.log
