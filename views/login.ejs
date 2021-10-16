@@ -1,25 +1,22 @@
 <%- include('./partials/header.ejs') %>
-    <body>
-        <div class="full">
-            <div class="container">
-                <div class="cont">
-                    <div class="l">
-                        <div class="text-l">
-                            <h1>Bem-vindo(a)!</h1>
-                            <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
-                        </div>
-                    </div>
-                    <div class="r">
-                        <form method="post" action="/logar">
-                            <label for="email">E-mail</label>
-                            <input type="email" name="UserEmail" id="email">
-                            <label for="senha">Senha</label>
-                            <input type="password" name="UserPassworld" id="senha">
-                            <button>Entrar</button>
-                        </form>
-                    </div>
+
+    <body id="fundo">
+        <div id="telaLogin">
+            <div class="left">
+                <div class="text-left">
+                    <h1>Bem-vindo(a)!</h1>
+                    <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
                 </div>
+            </div>
+            <div class="right">
+                <form method="post" action="/logar">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="UserEmail" id="email" placeholder="Insira o seu email">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="UserPassworld" id="senha" placeholder="Digite sua senha">
+                    <button>Entrar</button>
+                </form>
             </div>
         </div>
     </body>
-<%- include ('./partials/footer.ejs') %>
+    <%- include ('./partials/footer.ejs') %>
