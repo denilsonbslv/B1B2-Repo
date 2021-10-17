@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const connection = require("./database/database");
+const Usuario = require("./database/Usuario");
 
 // Database
 connection
@@ -29,11 +30,33 @@ app.get("/login", (req, res) => {
     });
 });
 
-app.post("/logar", (req, res) => {
+app.post("/perfilusuario", (req, res) => {
     var UserEmail = req.body.UserEmail;
     var UserPassworld = req.body.UserPassworld;
+    Usuario.findOne({
+        where: {email: UserEmail}
+    })
+    .then(usuario => {
+        if(usuario.email == undefined){
+            res.send("Usuario não existe");
+        }else if(usuario.passworld != UserPassworld){
+            res.send("Senha incorreta!");
+        }else{
+            res.render("PerfilUsuario", {
+                usuario: usuario
+            });
+        }
+    })
+    .catch((msgErro) => {
+        res.send("Email não econtrado")
+    });
+});
 
-    res.send("E-mail: " + UserEmail + "\nSenha: " + UserPassworld);
+app.get("/perfilusuario", (req, res) => {
+    var usuario = req.body.usuario;
+    res.render("PerfilUsuario", {
+        usuario: usuario
+    });
 })
 
 app.listen(8080, ()=>{
