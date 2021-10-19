@@ -1,9 +1,12 @@
+// Constantes padrão
 const express = require("express");
 const app = express();
 const connection = require("./database/database");
+const port = 80;
 const Usuario = require("./database/Usuario");
 
-// Database
+
+// Conexão com o banco de dados
 connection
     .authenticate()
     .then(() => {
@@ -11,26 +14,30 @@ connection
     })
     .catch((msgErro) => {
         console.log(msgErro);
-    })
+    });
+
 
 // Estou dizendo para o Express usar o EJS como view engine
 app.set('view engine','ejs');
 app.use(express.static('public'))
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
-app.get("/", (req, res) => {
+
+// Rotas
+app.get("/", (req, res) => { // Rota da home
     res.render("index", {
     });
 });
 
+// Rota da tela de login
 app.get("/login", (req, res) => {
     res.render("login", {
     });
 });
 
-app.post("/perfilusuario", (req, res) => {
+// Rota para fazer login
+app.post("/logar", (req, res) => {
     var UserEmail = req.body.UserEmail;
     var UserPassworld = req.body.UserPassworld;
     Usuario.findOne({
@@ -42,23 +49,29 @@ app.post("/perfilusuario", (req, res) => {
         }else if(usuario.passworld != UserPassworld){
             res.send("Senha incorreta!");
         }else{
-            res.render("PerfilUsuario", {
-                usuario: usuario
-            });
+            //res.send("teste");
+            res.redirect("/perfilusuario/"+usuario.id+"/"+usuario.name);
         }
     })
     .catch((msgErro) => {
-        res.send("Email não econtrado")
+        res.send("Email não econtrado");
     });
 });
 
-app.get("/perfilusuario", (req, res) => {
-    var usuario = req.body.usuario;
-    res.render("PerfilUsuario", {
-        usuario: usuario
+// Rota da tela de usuário
+app.get("/perfilusuario/:id/:name", (req, res) => {
+    var id = req.params.id;
+    Usuario.findOne({
+        where: {id: id}
+    })
+    .then(usuario => {
+        res.render("perfilusuario", {
+            usuario: usuario
+        });
     });
-})
+});
 
-app.listen(8080, ()=>{
-    console.log("App rodando!")
+// Iniciando node
+app.listen(port, ()=>{
+    console.log("App rodando! Na porta: " + port);
 });
