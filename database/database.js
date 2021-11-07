@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
-const connection = new Sequelize('dbb1b2projeto', 'admin', 'd9z1199N',{
-    host: 'mysqlserver.cjhwk0qrane0.us-east-2.rds.amazonaws.com',
-    dialect: 'mysql'
+const connection = new Sequelize('bd', 'user', 'pass',{
+    host: 'host',
+    dialect: 'bd-lanquage'
 })
 
 module.exports = connection;
