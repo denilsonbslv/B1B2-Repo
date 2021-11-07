@@ -1,6 +1,9 @@
 # Node_Modules
 node_modules
 
+# Database
+Database
+
 # databases
 
 # Logs
@@ -107,3 +110,5 @@ dist
 
 # TernJS port file
 .tern-port
+database/database.js
+database/database.js
